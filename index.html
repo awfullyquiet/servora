@@ -1,0 +1,1647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Servora — Buy Services, Simply</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --text: #102044;
+      --muted: #64748b;
+      --border: #e5eaf2;
+      --background: #f8fafc;
+      --white: #ffffff;
+      --success: #16a34a;
+      --radius: 16px;
+      --container: 1200px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.5;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(var(--container), calc(100% - 40px));
+      margin: auto;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    .header {
+      height: 72px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(255,255,255,.95);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+    }
+
+    .nav {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 23px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      white-space: nowrap;
+    }
+
+    .logo-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 10px;
+      background: var(--primary);
+      display: grid;
+      place-items: center;
+      color: white;
+      font-weight: 800;
+      transform: rotate(-15deg);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-right: auto;
+      margin-left: 45px;
+    }
+
+    .nav-links a {
+      transition: color .2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-search {
+      width: 250px;
+      height: 44px;
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 0 16px;
+      background: white;
+    }
+
+    .nav-search span {
+      color: var(--muted);
+    }
+
+    .nav-search input {
+      width: 100%;
+      border: 0;
+      outline: 0;
+      font-size: 13px;
+    }
+
+    .login {
+      font-size: 14px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 10px;
+      padding: 12px 19px;
+      font-weight: 600;
+      transition: .2s;
+    }
+
+    .btn-primary {
+      color: white;
+      background: var(--primary);
+      box-shadow: 0 7px 20px rgba(37,99,235,.22);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+
+    .mobile-menu {
+      display: none;
+      border: 0;
+      background: transparent;
+      font-size: 25px;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 75% 20%, #dbeafe 0, transparent 35%),
+        linear-gradient(110deg, #ffffff 20%, #f7fbff 100%);
+    }
+
+    .hero-inner {
+      min-height: 480px;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .trust-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: #eaf8f1;
+      color: #16805a;
+      padding: 7px 13px;
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 5vw, 65px);
+      line-height: 1.02;
+      letter-spacing: -3px;
+      max-width: 650px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: var(--primary);
+    }
+
+    .hero-text {
+      max-width: 520px;
+      color: var(--muted);
+      font-size: 16px;
+      margin-bottom: 26px;
+    }
+
+    .hero-search {
+      max-width: 590px;
+      height: 58px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 6px;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 10px 35px rgba(15,23,42,.08);
+    }
+
+    .hero-search-icon {
+      padding-left: 14px;
+      color: var(--muted);
+      font-size: 19px;
+    }
+
+    .hero-search input {
+      flex: 1;
+      min-width: 0;
+      border: 0;
+      outline: 0;
+      padding: 0 12px;
+      font-size: 14px;
+    }
+
+    .hero-search button {
+      height: 46px;
+      padding: 0 25px;
+      border-radius: 10px;
+      border: 0;
+      color: white;
+      background: var(--primary);
+      font-weight: 600;
+    }
+
+    .popular {
+      margin-top: 13px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+    }
+
+    .popular strong {
+      margin-right: 5px;
+    }
+
+    .popular a {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 6px 12px;
+      color: #52627c;
+      transition: .2s;
+    }
+
+    .popular a:hover {
+      color: var(--primary);
+      border-color: #bfdbfe;
+    }
+
+    /* Hero visual */
+
+    .hero-visual {
+      position: relative;
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-photo {
+      width: 78%;
+      height: 360px;
+      object-fit: cover;
+      border-radius: 28px;
+      box-shadow: 0 25px 60px rgba(15,23,42,.13);
+    }
+
+    .floating-card {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 13px 17px;
+      background: white;
+      border-radius: 13px;
+      box-shadow: 0 12px 35px rgba(15,23,42,.14);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .floating-card small {
+      display: block;
+      font-weight: 500;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .floating-icon {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      background: #eff6ff;
+      border-radius: 12px;
+      font-size: 20px;
+    }
+
+    .card-one {
+      top: 55px;
+      left: 0;
+    }
+
+    .card-two {
+      top: 160px;
+      left: -20px;
+    }
+
+    .card-three {
+      bottom: 55px;
+      left: 20px;
+    }
+
+    /* =========================
+       SECTIONS
+    ========================= */
+
+    .section {
+      padding: 65px 0;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 28px;
+    }
+
+    .section-title {
+      font-size: 25px;
+      letter-spacing: -1px;
+    }
+
+    .view-all {
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    /* Categories */
+
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(9, 1fr);
+      gap: 14px;
+    }
+
+    .category {
+      text-align: center;
+      padding: 15px 8px;
+      border-radius: 14px;
+      transition: .2s;
+    }
+
+    .category:hover {
+      background: #f8fafc;
+      transform: translateY(-3px);
+    }
+
+    .category-icon {
+      width: 68px;
+      height: 68px;
+      margin: auto auto 9px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      font-size: 27px;
+      background: #eff6ff;
+    }
+
+    .category:nth-child(2) .category-icon { background: #f5f3ff; }
+    .category:nth-child(3) .category-icon { background: #ecfdf5; }
+    .category:nth-child(4) .category-icon { background: #fff1f2; }
+    .category:nth-child(5) .category-icon { background: #fffbeb; }
+    .category:nth-child(6) .category-icon { background: #faf5ff; }
+    .category:nth-child(7) .category-icon { background: #ecfeff; }
+    .category:nth-child(8) .category-icon { background: #fff7ed; }
+    .category:nth-child(9) .category-icon { background: #f1f5f9; }
+
+    .category-name {
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    /* =========================
+       SERVICE CARDS
+    ========================= */
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 18px;
+    }
+
+    .service-card {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      background: white;
+      transition: .25s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(15,23,42,.1);
+    }
+
+    .service-image {
+      height: 155px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: .4s;
+    }
+
+    .service-card:hover .service-image img {
+      transform: scale(1.04);
+    }
+
+    .heart {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 30px;
+      height: 30px;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(255,255,255,.95);
+      display: grid;
+      place-items: center;
+      font-size: 15px;
+    }
+
+    .top-rated {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: #0f9f6e;
+      color: white;
+      border-radius: 20px;
+      padding: 4px 9px;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .service-body {
+      padding: 13px;
+    }
+
+    .service-name {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .rating {
+      font-size: 12px;
+      color: #64748b;
+      margin-bottom: 8px;
+    }
+
+    .rating span {
+      color: #f59e0b;
+    }
+
+    .price {
+      font-size: 13px;
+      margin-bottom: 11px;
+    }
+
+    .price strong {
+      font-size: 16px;
+    }
+
+    .book-btn {
+      width: 100%;
+      border: 0;
+      background: var(--primary);
+      color: white;
+      border-radius: 8px;
+      padding: 10px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .book-btn:hover {
+      background: var(--primary-dark);
+    }
+
+    /* =========================
+       TRUST
+    ========================= */
+
+    .trust-section {
+      background: #f8fbff;
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 25px;
+    }
+
+    .why-us {
+      padding: 32px;
+      border-radius: 18px;
+      background: #edf6ff;
+    }
+
+    .why-us h2 {
+      font-size: 22px;
+      margin-bottom: 5px;
+    }
+
+    .why-us > p {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 25px;
+    }
+
+    .trust-items {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 23px;
+    }
+
+    .trust-item {
+      display: flex;
+      gap: 12px;
+    }
+
+    .trust-icon {
+      width: 42px;
+      height: 42px;
+      flex: 0 0 42px;
+      border-radius: 50%;
+      background: #dbeafe;
+      display: grid;
+      place-items: center;
+    }
+
+    .trust-item h4 {
+      font-size: 13px;
+      margin-bottom: 3px;
+    }
+
+    .trust-item p {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    /* Testimonial */
+
+    .testimonial {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .testimonial-person {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .avatar {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .testimonial-name {
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .testimonial-location {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .testimonial-text {
+      color: #52627c;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .stars {
+      color: #f59e0b;
+      margin-top: 12px;
+    }
+
+    /* =========================
+       CTA
+    ========================= */
+
+    .cta {
+      padding: 25px 0 65px;
+    }
+
+    .cta-box {
+      min-height: 110px;
+      border-radius: 18px;
+      padding: 25px 38px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      color: white;
+      background:
+        radial-gradient(circle at 85% 50%, rgba(96,165,250,.45), transparent 28%),
+        linear-gradient(100deg, #173ea5, #245bdc);
+    }
+
+    .cta-content {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .cta-icon {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.13);
+      display: grid;
+      place-items: center;
+      font-size: 25px;
+    }
+
+    .cta h2 {
+      font-size: 18px;
+      margin-bottom: 3px;
+    }
+
+    .cta p {
+      font-size: 12px;
+      opacity: .85;
+    }
+
+    .cta-btn {
+      background: white;
+      color: var(--primary);
+      border: 0;
+      border-radius: 30px;
+      padding: 12px 23px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 35px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .footer-logo p {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 8px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 40px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* =========================
+       TABLET
+    ========================= */
+
+    @media (max-width: 1050px) {
+
+      .nav-links {
+        margin-left: 20px;
+        gap: 16px;
+      }
+
+      .nav-search {
+        width: 190px;
+      }
+
+      .categories {
+        grid-template-columns: repeat(5, 1fr);
+      }
+
+      .services {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr .8fr;
+      }
+
+      .hero-photo {
+        width: 90%;
+      }
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 760px) {
+
+      .container {
+        width: min(100% - 28px, 600px);
+      }
+
+      .header {
+        height: 65px;
+      }
+
+      .nav-links,
+      .nav-search,
+      .login,
+      .nav > .btn {
+        display: none;
+      }
+
+      .mobile-menu {
+        display: block;
+      }
+
+      .hero-inner {
+        min-height: auto;
+        padding: 55px 0 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .hero h1 {
+        font-size: 43px;
+        letter-spacing: -2px;
+      }
+
+      .hero-text {
+        font-size: 14px;
+      }
+
+      .hero-search {
+        height: 54px;
+      }
+
+      .hero-search button {
+        height: 42px;
+        padding: 0 16px;
+      }
+
+      .hero-visual {
+        min-height: 310px;
+      }
+
+      .hero-photo {
+        width: 85%;
+        height: 280px;
+      }
+
+      .floating-card {
+        transform: scale(.85);
+      }
+
+      .card-one {
+        top: 15px;
+        left: 0;
+      }
+
+      .card-two {
+        top: 100px;
+        left: -10px;
+      }
+
+      .card-three {
+        bottom: 20px;
+        left: 0;
+      }
+
+      .section {
+        padding: 45px 0;
+      }
+
+      .section-header {
+        margin-bottom: 20px;
+      }
+
+      .section-title {
+        font-size: 21px;
+      }
+
+      .categories {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 5px;
+      }
+
+      .category-icon {
+        width: 60px;
+        height: 60px;
+      }
+
+      .services {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .service-image {
+        height: 130px;
+      }
+
+      .service-body {
+        padding: 10px;
+      }
+
+      .trust-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .trust-items {
+        grid-template-columns: 1fr;
+      }
+
+      .why-us,
+      .testimonial {
+        padding: 24px;
+      }
+
+      .cta-box {
+        padding: 25px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .cta-btn {
+        width: 100%;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+      }
+
+      .footer-links {
+        flex-wrap: wrap;
+        gap: 18px;
+      }
+    }
+
+    /* =========================
+       SMALL MOBILE
+    ========================= */
+
+    @media (max-width: 420px) {
+
+      .hero h1 {
+        font-size: 37px;
+      }
+
+      .hero-search input {
+        font-size: 12px;
+      }
+
+      .hero-search button {
+        padding: 0 12px;
+      }
+
+      .services {
+        grid-template-columns: 1fr;
+      }
+
+      .service-image {
+        height: 190px;
+      }
+
+      .categories {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       HEADER
+  ========================== -->
+
+  <header class="header">
+    <div class="container nav">
+
+      <a href="#" class="logo">
+        <span class="logo-icon">S</span>
+        Servora
+      </a>
+
+      <nav class="nav-links">
+        <a href="#categories">Categories</a>
+        <a href="#services">Explore</a>
+        <a href="#provider">Become a Provider</a>
+      </nav>
+
+      <div class="nav-search">
+        <span>⌕</span>
+        <input type="text" placeholder="Search services..." />
+      </div>
+
+      <a href="#" class="login">Login</a>
+
+      <button class="btn btn-primary">
+        Get Started
+      </button>
+
+      <button class="mobile-menu" aria-label="Open menu">
+        ☰
+      </button>
+
+    </div>
+  </header>
+
+
+  <main>
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section class="hero">
+      <div class="container hero-inner">
+
+        <div class="hero-content">
+
+          <div class="trust-badge">
+            ✓ Trusted by 1M+ happy customers
+          </div>
+
+          <h1>
+            Get things done.<br>
+            Buy <span>services</span>, simply.
+          </h1>
+
+          <p class="hero-text">
+            Find trusted professionals for whatever you need —
+            online or at your doorstep.
+          </p>
+
+          <form class="hero-search" id="searchForm">
+
+            <span class="hero-search-icon">⌕</span>
+
+            <input
+              id="serviceSearch"
+              type="text"
+              placeholder='What service do you need? e.g. "house cleaning"'
+            />
+
+            <button type="submit">
+              Search
+            </button>
+
+          </form>
+
+          <div class="popular">
+            <strong>Popular:</strong>
+
+            <a href="#">Cleaning</a>
+            <a href="#">Web Design</a>
+            <a href="#">Photography</a>
+            <a href="#">Tutoring</a>
+          </div>
+
+        </div>
+
+
+        <div class="hero-visual">
+
+          <img
+            class="hero-photo"
+            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=85"
+            alt="Professional service provider"
+          >
+
+          <div class="floating-card card-one">
+            <div class="floating-icon">🧹</div>
+            <div>
+              Home Cleaning
+              <small>From ₹699</small>
+            </div>
+          </div>
+
+          <div class="floating-card card-two">
+            <div class="floating-icon">💻</div>
+            <div>
+              Web Design
+              <small>From ₹3,999</small>
+            </div>
+          </div>
+
+          <div class="floating-card card-three">
+            <div class="floating-icon">📷</div>
+            <div>
+              Photography
+              <small>From ₹4,999</small>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =========================
+         CATEGORIES
+    ========================== -->
+
+    <section class="section" id="categories">
+
+      <div class="container">
+
+        <div class="section-header">
+          <h2 class="section-title">
+            Explore services
+          </h2>
+
+          <a href="#" class="view-all">
+            View all categories →
+          </a>
+        </div>
+
+
+        <div class="categories">
+
+          <a href="#" class="category">
+            <div class="category-icon">🏠</div>
+            <div class="category-name">Home</div>
+          </a>
+
+          <a href="#" class="category">
+            <div class="category-icon">💻</div>
+            <div class="category-name">Digital</div>
+          </a>
+
+          <a href="#" class="category">
+            <div class="category-icon">🎓</div>
+            <div class="category-name">Education</div>
+          </a>
+
+          <a href="#" class="category">
+            <div class="category-icon">🚗</div>
+            <div class="category-name">Auto</div>
+          </a>
+
+          <a href="#" class="category">
+            <div class="category-icon">📅</div>
+            <div class="category-name">Events</div>
+          </a>
+
+          <a href="#" class="category">
+            <div class="category-icon">👤</div>
+            <div class="category-name">Personal</div>
+          </a>
+
+          <a href="#" class="category">
+            <div class="category-icon">💼</div>
+            <div class="category-name">Business</div>
+          </a>
+
+          <a href="#" class="category">
+            <div class="category-icon">🔧</div>
+            <div class="category-name">Repairs</div>
+          </a>
+
+          <a href="#" class="category">
+            <div class="category-icon">•••</div>
+            <div class="category-name">More</div>
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         POPULAR SERVICES
+    ========================== -->
+
+    <section class="section" id="services">
+
+      <div class="container">
+
+        <div class="section-header">
+          <h2 class="section-title">
+            Popular services
+          </h2>
+
+          <a href="#" class="view-all">
+            View all →
+          </a>
+        </div>
+
+
+        <div class="services">
+
+          <!-- CARD 1 -->
+          <article class="service-card">
+
+            <div class="service-image">
+
+              <img
+                src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=700&q=80"
+                alt="Home cleaning"
+              >
+
+              <span class="top-rated">
+                ★ Top rated
+              </span>
+
+              <button class="heart">♡</button>
+
+            </div>
+
+            <div class="service-body">
+
+              <h3 class="service-name">
+                Home Cleaning
+              </h3>
+
+              <div class="rating">
+                <span>★</span>
+                4.8 (2.1k reviews)
+              </div>
+
+              <div class="price">
+                From <strong>₹699</strong>
+              </div>
+
+              <button class="book-btn">
+                Book now
+              </button>
+
+            </div>
+
+          </article>
+
+
+          <!-- CARD 2 -->
+
+          <article class="service-card">
+
+            <div class="service-image">
+
+              <img
+                src="https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=700&q=80"
+                alt="Logo and web design"
+              >
+
+              <button class="heart">♡</button>
+
+            </div>
+
+            <div class="service-body">
+
+              <h3 class="service-name">
+                Logo Design
+              </h3>
+
+              <div class="rating">
+                <span>★</span>
+                4.9 (840 reviews)
+              </div>
+
+              <div class="price">
+                From <strong>₹999</strong>
+              </div>
+
+              <button class="book-btn">
+                Book now
+              </button>
+
+            </div>
+
+          </article>
+
+
+          <!-- CARD 3 -->
+
+          <article class="service-card">
+
+            <div class="service-image">
+
+              <img
+                src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=700&q=80"
+                alt="AC service"
+              >
+
+              <button class="heart">♡</button>
+
+            </div>
+
+            <div class="service-body">
+
+              <h3 class="service-name">
+                AC Service
+              </h3>
+
+              <div class="rating">
+                <span>★</span>
+                4.7 (1.2k reviews)
+              </div>
+
+              <div class="price">
+                From <strong>₹499</strong>
+              </div>
+
+              <button class="book-btn">
+                Book now
+              </button>
+
+            </div>
+
+          </article>
+
+
+          <!-- CARD 4 -->
+
+          <article class="service-card">
+
+            <div class="service-image">
+
+              <img
+                src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=700&q=80"
+                alt="Private tutoring"
+              >
+
+              <button class="heart">♡</button>
+
+            </div>
+
+            <div class="service-body">
+
+              <h3 class="service-name">
+                Private Tutoring
+              </h3>
+
+              <div class="rating">
+                <span>★</span>
+                4.8 (956 reviews)
+              </div>
+
+              <div class="price">
+                From <strong>₹799</strong>
+              </div>
+
+              <button class="book-btn">
+                Book now
+              </button>
+
+            </div>
+
+          </article>
+
+
+          <!-- CARD 5 -->
+
+          <article class="service-card">
+
+            <div class="service-image">
+
+              <img
+                src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=700&q=80"
+                alt="Event photography"
+              >
+
+              <button class="heart">♡</button>
+
+            </div>
+
+            <div class="service-body">
+
+              <h3 class="service-name">
+                Event Photography
+              </h3>
+
+              <div class="rating">
+                <span>★</span>
+                4.9 (672 reviews)
+              </div>
+
+              <div class="price">
+                From <strong>₹4,999</strong>
+              </div>
+
+              <button class="book-btn">
+                Book now
+              </button>
+
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         TRUST
+    ========================== -->
+
+    <section class="section trust-section">
+
+      <div class="container trust-grid">
+
+        <div class="why-us">
+
+          <h2>
+            Why choose Servora?
+          </h2>
+
+          <p>
+            A safer, simpler and smarter way to get things done.
+          </p>
+
+          <div class="trust-items">
+
+            <div class="trust-item">
+              <div class="trust-icon">✓</div>
+              <div>
+                <h4>Verified Professionals</h4>
+                <p>
+                  Trusted service providers with verified profiles.
+                </p>
+              </div>
+            </div>
+
+            <div class="trust-item">
+              <div class="trust-icon">★</div>
+              <div>
+                <h4>Transparent Pricing</h4>
+                <p>
+                  Know the cost upfront. No hidden fees.
+                </p>
+              </div>
+            </div>
+
+            <div class="trust-item">
+              <div class="trust-icon">🔒</div>
+              <div>
+                <h4>Secure Payments</h4>
+                <p>
+                  Safe payments with buyer protection.
+                </p>
+              </div>
+            </div>
+
+            <div class="trust-item">
+              <div class="trust-icon">◉</div>
+              <div>
+                <h4>24/7 Support</h4>
+                <p>
+                  We're here whenever you need us.
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="testimonial">
+
+          <div class="testimonial-person">
+
+            <img
+              class="avatar"
+              src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80"
+              alt="Customer"
+            >
+
+            <div>
+              <div class="testimonial-name">
+                Priya Sharma
+              </div>
+
+              <div class="testimonial-location">
+                Bangalore
+              </div>
+            </div>
+
+          </div>
+
+          <p class="testimonial-text">
+            “I booked a home cleaning service through
+            Servora and the entire process was incredibly
+            simple. I found a provider, selected a package,
+            and booked in minutes.”
+          </p>
+
+          <div class="stars">
+            ★★★★★
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         REQUEST SERVICE CTA
+    ========================== -->
+
+    <section class="cta" id="provider">
+
+      <div class="container">
+
+        <div class="cta-box">
+
+          <div class="cta-content">
+
+            <div class="cta-icon">
+              🚀
+            </div>
+
+            <div>
+              <h2>
+                Need something custom?
+              </h2>
+
+              <p>
+                Tell us what you need and get offers from trusted professionals.
+              </p>
+            </div>
+
+          </div>
+
+          <button class="cta-btn" id="requestBtn">
+            Request a service →
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer>
+
+    <div class="container footer-inner">
+
+      <div class="footer-logo">
+
+        <a href="#" class="logo">
+          <span class="logo-icon">S</span>
+          Servora
+        </a>
+
+        <p>
+          Buy services. Get things done.
+        </p>
+
+      </div>
+
+      <div class="footer-links">
+        <a href="#">About</a>
+        <a href="#">How it works</a>
+        <a href="#">For providers</a>
+        <a href="#">Help center</a>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <script>
+
+    /* =========================
+       SEARCH
+    ========================== */
+
+    const searchForm = document.getElementById("searchForm");
+    const searchInput = document.getElementById("serviceSearch");
+
+    searchForm.addEventListener("submit", function(event) {
+
+      event.preventDefault();
+
+      const value = searchInput.value.trim();
+
+      if (!value) {
+        searchInput.focus();
+        return;
+      }
+
+      alert(`Searching for: ${value}`);
+
+    });
+
+
+    /* =========================
+       FAVORITES
+    ========================== */
+
+    const hearts = document.querySelectorAll(".heart");
+
+    hearts.forEach(heart => {
+
+      heart.addEventListener("click", function() {
+
+        if (this.textContent.trim() === "♡") {
+          this.textContent = "♥";
+        } else {
+          this.textContent = "♡";
+        }
+
+      });
+
+    });
+
+
+    /* =========================
+       BOOK BUTTONS
+    ========================== */
+
+    const bookButtons = document.querySelectorAll(".book-btn");
+
+    bookButtons.forEach(button => {
+
+      button.addEventListener("click", function() {
+
+        const card = this.closest(".service-card");
+        const service = card.querySelector(".service-name").textContent;
+
+        alert(`Booking: ${service}`);
+
+      });
+
+    });
+
+
+    /* =========================
+       REQUEST SERVICE
+    ========================== */
+
+    document
+      .getElementById("requestBtn")
+      .addEventListener("click", function() {
+
+        alert(
+          "Tell us what service you need and we'll help you find the right provider."
+        );
+
+      });
+
+  </script>
+
+</body>
+</html>
